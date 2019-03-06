@@ -1,13 +1,13 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const server = require("../server");
+const server = require("../app");
 const should = chai.should();
 chai.use(chaiHttp);
 
 // Agent that will keep trak of our cookies
 const agent = chai.request.agent(server);
 
-const User = require("../models/user");
+// const User = require("../models/user");
 
 describe("User", function() {
     it("should not be able to login if they have not registered", function(done) {
