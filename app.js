@@ -26,15 +26,14 @@ app.use(expressValidator());
 const Readme = require('./models/readme.js');
 
 // INDEX
-app.get('/readmes', (req, res) => {
-    // res.render('readmes-index', { readmes: readmes});
-    Readme.find()
-        .then(readmes => {
-            res.render('readmes-index', { readmes: readmes });
-        })
-        .catch(err => {
-            console.log(err);
-        })
+app.get('/readmes/index', (req, res) => {
+    Readme.find({})
+      .then(readmes => {
+        res.render("readmes-index", { readmes });
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
 });
 
 // New
@@ -53,6 +52,18 @@ app.post("/readmes/new", (req, res) => {
      // REDIRECT TO THE ROOT
      return res.redirect(`/readmes`);
   });
+});
+
+// SHOW
+app.get("/readmes/:id", function(req, res) {
+  // LOOK UP THE README
+  Readme.findById(req.params.id)
+    .then(readme => {
+      res.render("readmes-show", { readme });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 });
 
 // ADD CONTROLLERS
