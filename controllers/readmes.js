@@ -12,6 +12,7 @@ module.exports = app => {
     ]
     // ROOT ROUTE
     app.get('/', (req, res) => {
-        res.json({readmes:readmes});
+        // res.json({readmes:readmes});
+        res.render('home', { msg: 'Handlebars are Cool!' });
     })
 };
