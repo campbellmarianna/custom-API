@@ -12,15 +12,6 @@ module.exports = app => {
     //       publication: "https://medium.com/@jasmine.yhumbert/how-to-get-your-flask-app-running-on-heroku-892030811c0f",
     //       createdAt: "03/04/19"}
     // ]
-    // ROOT ROUTE
-    app.get('/readmes', (req, res) => {
-        // res.render('readmes-index', { readmes: readmes});
-        Readme.find()
-            .then(reviews => {
-                res.render('readmes-index', { readmes: readmes });
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    })
+    
+
 };

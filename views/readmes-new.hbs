@@ -1,0 +1,34 @@
+<!-- views/readmes-new.hbs -->
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <form action="/readmes/new" method="post">
+            <fieldset>
+                <legend>New README</legend>
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                </div>
+                <!-- URL -->
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" name="url" class="form-control" id="url" placeholder="https://www.google.com">
+                </div>
+                <!-- SUMMARY -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" rows="3" id="description"></textarea>
+                </div>
+                <!-- SUBREDDIT -->
+                <div class="form-group">
+                    <label for="publications">Publication (EX: Blogpost, article, etc ...)</label>
+                    <input name="publications" type="text" class="form-control" id="public" placeholder="https://www.google.com">
+                </div>
+                <!-- SUBMIT BUTTOM -->
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Create README</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
