@@ -66,6 +66,23 @@ app.get("/readmes/:id", function(req, res) {
     });
 });
 
+// DELETE
+app.delete('/readmes/:id', function (req,res) {
+    Readme.findByIdAndRemove(req.params.id).then((readme) => {
+        res.redirect('/readmes/index');
+    }).catch((err) => {
+        console.log(err.message);
+    });
+});
+
+
+// EDIT
+app.get('/readmes/:id/edit', (req, res) => {
+  Readme.findById(req.params.id, function(err, readme) {
+    res.render('readmes-edit', {readme: readme});
+  })
+})
+
 // ADD CONTROLLERS
 // require('./controllers/readmes.js')(app);
 
