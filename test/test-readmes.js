@@ -14,7 +14,7 @@ describe('Readmes', ()  => {
         .get('/readmes')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -25,7 +25,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -36,7 +36,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -47,7 +47,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>/articles')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -58,7 +58,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>/articles')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -69,7 +69,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>/articles/<id>')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
@@ -80,7 +80,7 @@ describe('Readmes', ()  => {
         .get('/readmes/<name>/articles/<id>')
         .end((err, res) => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.html;
           done();
         });
   });
