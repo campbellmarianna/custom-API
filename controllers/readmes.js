@@ -16,9 +16,11 @@ module.exports = app => {
 
     // INDEX
     app.get('/readmes/index', (req, res) => {
+        var currentUser = req.user;
+
         Readme.find({})
           .then(readmes => {
-            res.render("readmes-index", { readmes });
+            res.render("readmes-index", { readmes, currentUser });
           })
           .catch(err => {
             console.log(err.message);
@@ -32,15 +34,18 @@ module.exports = app => {
 
     // CREATE
     app.post("/readmes/new", (req, res) => {
-        console.log(req.body)
-        // INSTANTIATE INSTANCE OF POST MODEL
-       const readme = new Readme(req.body);
+        if (req.user) {
+            // INSTANTIATE INSTANCE OF POST MODEL
+           const readme = new Readme(req.body);
 
-       // SAVE INSTANCE OF Readme MODEL TO DB
-       readme.save((err, post) => {
-         // REDIRECT TO THE ROOT
-         return res.redirect(`/readmes`);
-      });
+           // SAVE INSTANCE OF Readme MODEL TO DB
+           readme.save((err, post) => {
+             // REDIRECT TO THE ROOT
+             return res.redirect(`/readmes`);
+          });
+      } else {
+          return res.status(401); // UNAUTHORIZED
+      }
     });
 
     // SHOW
