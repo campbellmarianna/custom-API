@@ -1,5 +1,6 @@
 require('dotenv').config();
-const express = require('express')
+const express = require('express');
+const methodOverride = require('method-override')
 const hbs = require("express-handlebars");
 
 // INITIALIZE BODY-PARSER
@@ -9,7 +10,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
 // Set db
-require('./data/deploy-docs-db')
+require('./data/deploy-docs-db');
 
 var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
@@ -23,6 +24,9 @@ app.set("view engine", "hbs");
 // Use Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 
 // Add after body parser initialization!
 app.use(expressValidator());

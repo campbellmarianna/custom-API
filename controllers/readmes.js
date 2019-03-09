@@ -55,6 +55,24 @@ module.exports = app => {
         });
     });
 
+    // EDIT
+    app.get('/readmes/:id/edit', (req, res) => {
+      Readme.findById(req.params.id, function(err, readme) {
+        res.render('readmes-edit', {readme: readme});
+      })
+    })
+
+    // UPDATE
+    app.put('/readmes/:id', (req, res) => {
+      Readme.findByIdAndUpdate(req.params.id, req.body)
+        .then(readme => {
+          res.redirect(`/readmes/${readme._id}`)
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+    })
+
     // DELETE
     app.delete('/readmes/:id', function (req,res) {
         Readme.findByIdAndRemove(req.params.id).then((readme) => {
@@ -65,10 +83,5 @@ module.exports = app => {
     });
 
 
-    // EDIT
-    app.get('/readmes/:id/edit', (req, res) => {
-      Readme.findById(req.params.id, function(err, readme) {
-        res.render('readmes-edit', {readme: readme});
-      })
-    })
+
 };
