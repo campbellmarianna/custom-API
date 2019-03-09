@@ -37,8 +37,11 @@ const Readme = require('./models/readme.js');
 require('./controllers/readmes.js')(app);
 require('./controllers/auth.js')(app);
 
-app.listen(3000, () => {
-  console.log('App listening on port 3000!')
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log('App listening!')
 });
 
 module.exports = app;
