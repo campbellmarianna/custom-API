@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const hbs = require("express-handlebars");
 
@@ -9,6 +10,9 @@ const expressValidator = require('express-validator');
 
 // Set db
 require('./data/deploy-docs-db')
+
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -23,10 +27,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Add after body parser initialization!
 app.use(expressValidator());
 
+app.use(cookieParser()); // Add this after you initialize express.
+
+
 const Readme = require('./models/readme.js');
+
 
 // ADD CONTROLLERS
 require('./controllers/readmes.js')(app);
+require('./controllers/auth.js')(app);
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
