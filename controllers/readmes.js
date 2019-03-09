@@ -41,7 +41,7 @@ module.exports = app => {
            // SAVE INSTANCE OF Readme MODEL TO DB
            readme.save((err, post) => {
              // REDIRECT TO THE ROOT
-             return res.redirect(`/readmes`);
+             return res.redirect(`/readmes/index`);
           });
       } else {
           return res.status(401); // UNAUTHORIZED
